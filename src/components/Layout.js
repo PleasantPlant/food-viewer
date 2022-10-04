@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import TestGrid from "./pages/TestGrid";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Search from "./pages/Search";
 import SearchIcon from "@mui/icons-material/Search";
 import yelp from "../api/yelp";
@@ -20,7 +20,7 @@ import yelp from "../api/yelp";
 const Layout = () => {
   const [searchText, setSearchText] = useState("I'm here");
   const [results, setResults] = useState([]);
-  let mySearchText = "I'm here.";
+  //let mySearchText = "I'm here.";
 
   const searchApi = async (term) => {
     const response = await yelp("92688", term);
