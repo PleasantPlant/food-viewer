@@ -11,7 +11,6 @@ import {
   Paper,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import TestGrid from "./pages/TestGrid";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Search from "./pages/Search";
 import SearchIcon from "@mui/icons-material/Search";
@@ -81,7 +80,6 @@ const Layout = () => {
               path="/"
               element={<Search searchResults={results} />}
             />
-            <Route exact path="/testgrid" element={<TestGrid />} />
             <Route
               exact
               path="/search"

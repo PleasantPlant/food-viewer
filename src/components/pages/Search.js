@@ -20,10 +20,10 @@ const Search = ({ searchResults }) => {
 
   return (
     <>
-      <SearchResults food={cheapFood} title={"$10 > a plate"} />
-      <SearchResults food={mediumfood} title={"$11-$30 a plate"} />
-      <SearchResults food={expensivefood} title={"$31-$60 a plate"} />
-      <SearchResults food={reallyexpensivefood} title={"$61+ a plate"} />
+      <SearchResults food={cheapFood} title={"Gremlin Snacks"} />
+      <SearchResults food={mediumfood} title={"Premium Gremlin Snacks"} />
+      <SearchResults food={expensivefood} title={"Ultra-Premium Gremlin Snacks"} />
+      <SearchResults food={reallyexpensivefood} title={"Too expensive for Gremlins"} />
     </>
   );
 };
