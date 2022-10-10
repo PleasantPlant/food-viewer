@@ -24,6 +24,10 @@ const Layout = () => {
   const searchApi = async (term) => {
     const response = await yelp("92688", term);
     setResults(response.data.businesses);
+
+    const response2 = await fetch("/api/yelp");
+    const data = await response2.json();
+    console.log(data);
   };
 
   const doSearch = (e) => {
