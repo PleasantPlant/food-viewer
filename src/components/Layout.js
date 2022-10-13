@@ -16,13 +16,19 @@ import Search from "./pages/Search";
 import SearchIcon from "@mui/icons-material/Search";
 import yelp from "../api/yelp";
 
-const Layout = () => {
-  const [searchText, setSearchText] = useState("I'm here");
-  const [results, setResults] = useState([]);
-  //let mySearchText = "I'm here.";
+var mySearchText = 'mexican';
+var zipCode = '24416';
 
-  const searchApi = async (term) => {
-    const response = await yelp("92688", term);
+const Layout = () => {
+  const [searchText, setSearchText] = useState("mexican");
+  const [zipText, setZipText] = useState("24416");
+  const [results, setResults] = useState([]);
+
+
+
+
+  const searchApi = async (zip, term) => {
+    const response = await yelp(zip, term);
     setResults(response.data.businesses);
 
     const response2 = await fetch("/api/yelp");
@@ -32,11 +38,17 @@ const Layout = () => {
 
   const doSearch = (e) => {
     setSearchText(e.target.value);
-    searchApi(e.target.value);
+    mySearchText = e;
+    searchApi(zipCode.target.value, e.target.value);
   };
 
+  const zipSearch = (zip) => {
+    setZipText(zip.target.value);
+    zipCode = zip;
+    searchApi(zip.target.value, mySearchText.target.value)
+  }
   useEffect(() => {
-    searchApi("Mexican Food");
+    searchApi("24416", "Mexican Food");
   }, []);
 
   return (
@@ -71,12 +83,27 @@ const Layout = () => {
                     }}
                   />
                 </Typography>
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                  <TextField onKeyPress={(zip) => {
+                    if (zip.key === "Enter") zipSearch(zip);
+                  }}
+                    label="zipcode"
+                    variant="outlined"
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <SearchIcon />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                </Typography>
                 <Button color="inherit">Login</Button>
               </Toolbar>
             </AppBar>
           </Box>
           <Typography variant="6">
-            Your search results for {searchText}
+            Your search results for {searchText} in {zipText}
           </Typography>
           <Routes>
             <Route
