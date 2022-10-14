@@ -16,8 +16,6 @@ import Search from "./pages/Search";
 import SearchIcon from "@mui/icons-material/Search";
 import yelp from "../api/yelp";
 
-var mySearchText = 'mexican';
-var zipCode = '24416';
 
 const Layout = () => {
   const [searchText, setSearchText] = useState("mexican");
@@ -38,14 +36,12 @@ const Layout = () => {
 
   const doSearch = (e) => {
     setSearchText(e.target.value);
-    mySearchText = e;
-    searchApi(zipCode.target.value, e.target.value);
+    searchApi(zipText, e.target.value);
   };
 
   const zipSearch = (zip) => {
     setZipText(zip.target.value);
-    zipCode = zip;
-    searchApi(zip.target.value, mySearchText.target.value);
+    searchApi(zip.target.value, searchText);
   };
 
   useEffect(() => {
