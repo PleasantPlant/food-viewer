@@ -45,8 +45,9 @@ const Layout = () => {
   const zipSearch = (zip) => {
     setZipText(zip.target.value);
     zipCode = zip;
-    searchApi(zip.target.value, mySearchText.target.value)
-  }
+    searchApi(zip.target.value, mySearchText.target.value);
+  };
+
   useEffect(() => {
     searchApi("24416", "Mexican Food");
   }, []);
